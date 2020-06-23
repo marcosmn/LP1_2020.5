@@ -40,8 +40,17 @@ int App::run(int argc, char* argv[])
     return 0;
 }
 
-void App::add(const std::string message)
+void App::add()
 {
-    diary.add(message);
+    std::string mensagem;
+    std::cout << "Insira sua mensagem:" << std::endl;
+    std::getline(std::cin, mensagem);
+
+    add(mensagem);
+}
+
+void App::add(const std::string mensagem)
+{
+    diary.add(mensagem);
     diary.write();
 }
