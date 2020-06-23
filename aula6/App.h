@@ -12,6 +12,7 @@ struct App
   
     int run(int argc, char* argv[]);
     int show_usage();
+    void add();
     void add(const std::string mensagem);
 };
 
