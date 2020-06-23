@@ -39,3 +39,9 @@ int App::run(int argc, char* argv[])
     
     return 0;
 }
+
+void App::add(const std::string message)
+{
+    diary.add(message);
+    diary.write();
+}
