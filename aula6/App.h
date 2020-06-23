@@ -6,10 +6,10 @@
 
 struct App
 {
-  App(const std::string& filename);
-  Diario diario;
+    App(const std::string& filename);
+    Diario diario;
   
-  int run(int argc, char* argv[]);
+    int run(int argc, char* argv[]);
 };
 
 #endif
