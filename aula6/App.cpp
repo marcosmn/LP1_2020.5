@@ -54,7 +54,8 @@ void App::add(const std::string mensagem)
 
 void App::listar()
 {
-    for (size_t i = 0; i < diario.tamanho_mensagens; ++i) {
+    for (size_t i = 0; i < diario.tamanho_mensagens; ++i)
+    {
         const Mensagem& mensagem = diario.mensagens[i];
         std::cout << "-" << mensagem.content << std::endl;
     }
