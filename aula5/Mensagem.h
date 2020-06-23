@@ -5,15 +5,15 @@ using namespace std;
 struct Hora
 {
 	int hora;
-  int minuto;
-  int segundo;
+  	int minuto;
+  	int segundo;
 };
 
 struct Data
 {
 	int dia;
-  int mes;
-  int ano;
+  	int mes;
+  	int ano;
 };
 
 struct Mensagem
