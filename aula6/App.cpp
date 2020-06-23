@@ -27,7 +27,7 @@ int App::run(int argc, char* argv[])
     }
     else if (action == "list")
     {
-        list_messages();
+        listar();
     }
     else if (action == "search")
     {
@@ -51,6 +51,14 @@ void App::add()
 
 void App::add(const std::string mensagem)
 {
-    diary.add(mensagem);
-    diary.write();
+    diario.add(mensagem);
+    diario.write();
+}
+
+void App::listar()
+{
+    for (size_t i = 0; i < diario.tamanhoMensagens; ++i) {
+        const Mensagem& mensagem = diario.mensagens[i];
+        std::cout << "-" << mensagem.content << std::endl;
+    }
 }
