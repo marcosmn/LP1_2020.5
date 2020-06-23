@@ -7,9 +7,12 @@
 struct App
 {
     App(const std::string& filename);
+    
     Diario diario;
   
     int run(int argc, char* argv[]);
+    int show_usage();
+    void add(const std::string mensagem);
 };
 
 #endif
