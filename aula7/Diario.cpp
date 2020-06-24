@@ -8,7 +8,7 @@ Diario::Diario(const std::string& fn) : filename(fn), capacidade_mensagens(10), 
 
 Diario::~Diario()
 {
-  delete[] messages;
+  delete[] mensagens;
 }
 
 void Diario::add(const std::string& mensagem)
