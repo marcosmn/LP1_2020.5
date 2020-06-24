@@ -1,16 +1,25 @@
 #include "Diario.h"
 
-Diario::Diario(const std::string& fn) : filename(fn)
+Diario::Diario(const std::string& fn) : filename(fn), capacidade_mensagens(10), mensagens(nullptr)
 {
-  capacidade_mensagens = 10;
   tamanho_mensagens = 0;
-  Mensagem *mensagens = new Mensagem[capacidade_mensagens];
+  mensagens = new Mensagem[capacidade_mensagens];
+}
+
+Diario::~Diario()
+{
+  delete[] messages;
 }
 
 void Diario::add(const std::string& mensagem)
 {
-    capacidade_mensagens++;
-    diario.mensagens[capacidade_mensagens] = mensagem;
+  if(tamanho_mensagens < capacidade_mensagens)
+  {
+    //diario.mensagens[tamanho_mensagens] = mensagem;
+    mensagens[tamanho_mensagens].conteudo = mensagem;
+
+    tamanho_mensagens++;
+  }
 }
 
 void Diario::write()
