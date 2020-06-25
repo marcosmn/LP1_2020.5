@@ -19,7 +19,14 @@ void Diario::add(const std::string& mensagem)
     //mensagens[tamanho_mensagens].conteudo = mensagem;
     
     Mensagem mensagemAux;
-    mensagemAux.conteudo = mensagem
+    mensagemAux.conteudo = mensagem;
+    Data dataAux;
+    dataAux.set_from_string(dataAtual());
+    mensagemAux.data = dataAux;
+    Hora horaAux;
+    horaAux.set_from_string(horaAtual());
+    mensagemAux.hora = horaAux;
+    
     mensagens[tamanho_mensagens] = mensagemAux;
 
     tamanho_mensagens++;
