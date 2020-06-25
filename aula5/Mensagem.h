@@ -20,5 +20,5 @@ struct Mensagem
 {
 	Hora hora;
 	Data data;
-	string mensagem;
+	string conteudo;
 };
