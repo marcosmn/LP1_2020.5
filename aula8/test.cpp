@@ -14,10 +14,17 @@ int main(int argc, char* argv[])
   
   char barra;
   stream >> data.dia;
-  stream >> data.barra;
+  stream >> barra;
   stream >> data.mes;
-  stream >> data.barra;
+  stream >> barra;
   stream >> data.ano;
+  
+  Mensagem mensagemAux;
+  mensagemAux.conteudo = "Mensagem";
+  
+  std::cout << data.dia; << std::endl;
+  std::cout << data.mes; << std::endl;
+  std::cout << data.ano; << std::endl;
 
   return 0;
 }
