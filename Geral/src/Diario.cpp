@@ -83,3 +83,16 @@ void Diario::add(const std::string& mensagem)
 void Diario::write()
 {
 }
+
+Mensagem* Diario::pesquisar(const std::string& mensagem)
+{
+	for(int posicao = 0; posicao < quantidade_mensagens; posicao++)
+	{
+    		if(mensagens[posicao].conteudo.find(mensagem) != std::string::npos)
+		{
+      			return &mensagens[posicao];
+		}
+    	}
+	
+	return nullptr;
+}
