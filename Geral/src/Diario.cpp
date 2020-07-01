@@ -1,9 +1,9 @@
 #include "Diario.h"
-
-Diario::Diario(const std::string& fn) : filename(fn), capacidade_mensagens(10), mensagens(nullptr)
+//Diario::Diario(const std::string& fn) : filename(fn), capacidade_mensagens(10), mensagens(nullptr)
+Diario::Diario(const std::string& fn) : filename(fn)
 {
 	quantidade_mensagens = 0;
-	mensagens = new Mensagem[capacidade_mensagens];
+	//mensagens = new Mensagem[capacidade_mensagens];
 	
 	std::ifstream arquivo;
 	arquivo.open(filename);
@@ -30,7 +30,7 @@ Diario::Diario(const std::string& fn) : filename(fn), capacidade_mensagens(10), 
 
 Diario::~Diario()
 {
-	delete[] mensagens;
+	//delete[] mensagens;
 }
 
 void Diario::add(const std::string& mensagem)
@@ -103,6 +103,7 @@ void Diario::add(const Mensagem& mensagem)
 {
 	//mensagens[quantidade_mensagens] = mensagem;
 	mensagens.push_back(mensagem);
+	quantidade_mensagens++;
 }
 
 void Diario::write()
