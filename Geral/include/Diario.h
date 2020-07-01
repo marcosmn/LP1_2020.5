@@ -3,6 +3,7 @@
 
 #include "Mensagem.h"
 #include <string>
+#include <vector>
 
 struct Diario
 {
@@ -10,14 +11,16 @@ struct Diario
 	~Diary();
 
 	std::string filename;
-	Mensagem* mensagens;
+	//Mensagem* mensagens;
+	std::vector<Mensagem> Mensagens;
 	size_t quantidade_mensagens;
 	size_t capacidade_mensagens;
 	
 	void add(const std::string& mensagem);
 	void add(const Mensagem& mensagem);
 	void write();
-	Mensagem* pesquisar(const std::string& mensagem);
+	//Mensagem* pesquisar(const std::string& mensagem);
+	std::vector<Mensagem*> pesquisar(const std::string& mensagem);
 };
 
 #endif
