@@ -12,7 +12,7 @@ struct Diario
 
 	std::string filename;
 	//Mensagem* mensagens;
-	std::vector<Mensagem> Mensagens;
+	std::vector<Mensagem> mensagens;
 	size_t quantidade_mensagens;
 	size_t capacidade_mensagens;
 	
