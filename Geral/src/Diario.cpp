@@ -13,7 +13,6 @@ Diario::Diario(const std::string& fn) : filename(fn), capacidade_mensagens(10), 
 		return 1;
 	}
 	
-	//int numeroMensagem = 0;
 	std::string linha;
 	while (arquivo.eof())
 	{
@@ -22,9 +21,8 @@ Diario::Diario(const std::string& fn) : filename(fn), capacidade_mensagens(10), 
 			continue;
 		}
 		
-		diario.add(linha);
-		//mensagens[numeroMensagem] = linha;
-		//numeroMensagem++;
+		//diario.add(linha);
+		add(linha);
 	}
 
 	arquivo.close();
@@ -37,6 +35,24 @@ Diario::~Diario()
 
 void Diario::add(const std::string& mensagem)
 {
+	Mensagem mensagemAux;
+	mensagemAux.conteudo = mensagem;
+	
+	Data dataAux;
+	dataAux.set_from_string(dataAtual());
+	mensagemAux.data = dataAux;
+	
+	Hora horaAux;
+	horaAux.set_from_string(horaAtual());
+	mensagemAux.hora = horaAux;
+	
+	//mensagens[quantidade_mensagens] = mensagemAux;
+	//diario.add(mensagemAux);
+	mensagens.push_back(mensagemAux);
+	quantidade_mensagens++;
+	
+	// O VECTOR CUIDA DA CAPACIDADE
+	/*
 	if(quantidade_mensagens < capacidade_mensagens)
 	{
 		//diario.mensagens[quantidade_mensagens] = mensagem;
@@ -53,7 +69,9 @@ void Diario::add(const std::string& mensagem)
 		horaAux.set_from_string(horaAtual());
 		mensagemAux.hora = horaAux;
 		
-		mensagens[quantidade_mensagens] = mensagemAux;
+		//mensagens[quantidade_mensagens] = mensagemAux;
+		//diario.add(mensagemAux);
+		add(mensagemAux);
 		
 		quantidade_mensagens++;
 	}
@@ -78,21 +96,32 @@ void Diario::add(const std::string& mensagem)
 	  
 		capacidade_mensagens = capacidade_mensagens + 10;
 	}
+	*/
+}
+
+void Diario::add(const Mensagem& mensagem)
+{
+	//mensagens[quantidade_mensagens] = mensagem;
+	mensagens.push_back(mensagem);
 }
 
 void Diario::write()
 {
 }
 
-Mensagem* Diario::pesquisar(const std::string& mensagem)
+//Mensagem* Diario::pesquisar(const std::string& mensagem)
+std::vector<Mensagem*> Diario::pesquisar(const std::string& mensagem)
 {
+	std::vector<Mensagem*> mensagensCorrespondentes;
 	for(int posicao = 0; posicao < quantidade_mensagens; posicao++)
 	{
     		if(mensagens[posicao].conteudo.find(mensagem) != std::string::npos)
 		{
-      			return &mensagens[posicao];
+      			//return &mensagens[posicao];
+			mensagensCorrespondentes.push_back(&mensagens[posicao]);
 		}
     	}
 	
-	return nullptr;
+	//return nullptr;
+	return mensagensCorrespondentes;
 }
