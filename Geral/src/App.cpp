@@ -1,6 +1,4 @@
 #include "App.h"
-#include <iostream>
-#include <string>
 
 App::App(const std::string& filename) : diario(filename)
 {
@@ -24,6 +22,10 @@ int App::run(int argc, char* argv[])
         {
             add(argv[2]);
         }
+    }
+	else if (action == "search")
+    {
+        buscar();
     }
     else if (action == "list")
     {
@@ -50,6 +52,11 @@ void App::add(const std::string mensagem)
 {
     diario.add(mensagem);
     diario.write();
+}
+
+void App::buscar(const std::string mensagem)
+{
+    std::vector<Mensagem*> mensagensCorrespondentes = diario.pesquisar(mensagem);
 }
 
 void App::listar()

@@ -3,6 +3,8 @@
 
 #include "Diario.h"
 #include <string>
+#include <iostream>
+#include <vector>
 
 struct App
 {
@@ -11,10 +13,11 @@ struct App
     App(const std::string& filename);
 	
     int run(int argc, char* argv[]);
-    int show_usage();
     void add();
     void add(const std::string mensagem);
+	void buscar(const std::string mensagem);
 	void listar();
+	int show_usage();
 };
 
 #endif

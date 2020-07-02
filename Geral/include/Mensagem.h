@@ -1,8 +1,11 @@
 #include <string>
+#include <iostream>
+#include <stdio.h>
+#include <time.h>
 
 using namespace std;
 
-struct Hora
+struct Tempo
 {
 	int hora;
   	int minuto;
@@ -11,14 +14,17 @@ struct Hora
 
 struct Data
 {
+	Tempo tempo;
 	int dia;
   	int mes;
   	int ano;
+	
+	Data();
+	Data dataAtual();
 };
 
 struct Mensagem
 {
-	Hora hora;
 	Data data;
 	string conteudo;
 };

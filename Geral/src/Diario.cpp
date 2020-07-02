@@ -1,4 +1,5 @@
 #include "Diario.h"
+
 //Diario::Diario(const std::string& fn) : filename(fn), capacidade_mensagens(10), mensagens(nullptr)
 Diario::Diario(const std::string& fn) : filename(fn)
 {
@@ -21,7 +22,6 @@ Diario::Diario(const std::string& fn) : filename(fn)
 			continue;
 		}
 		
-		//diario.add(linha);
 		add(linha);
 	}
 
@@ -36,18 +36,11 @@ Diario::~Diario()
 void Diario::add(const std::string& mensagem)
 {
 	Mensagem mensagemAux;
+	mensagemAux.data = dataAtual();
 	mensagemAux.conteudo = mensagem;
 	
-	Data dataAux;
-	dataAux.set_from_string(dataAtual());
-	mensagemAux.data = dataAux;
-	
-	Hora horaAux;
-	horaAux.set_from_string(horaAtual());
-	mensagemAux.hora = horaAux;
-	
 	//mensagens[quantidade_mensagens] = mensagemAux;
-	//diario.add(mensagemAux);
+	//add(mensagemAux);
 	mensagens.push_back(mensagemAux);
 	quantidade_mensagens++;
 	
@@ -116,12 +109,12 @@ std::vector<Mensagem*> Diario::pesquisar(const std::string& mensagem)
 	std::vector<Mensagem*> mensagensCorrespondentes;
 	for(int posicao = 0; posicao < quantidade_mensagens; posicao++)
 	{
-    		if(mensagens[posicao].conteudo.find(mensagem) != std::string::npos)
+    	if(mensagens[posicao].conteudo.find(mensagem) != std::string::npos)
 		{
-      			//return &mensagens[posicao];
+      		//return &mensagens[posicao];
 			mensagensCorrespondentes.push_back(&mensagens[posicao]);
 		}
-    	}
+    }
 	
 	//return nullptr;
 	return mensagensCorrespondentes;
