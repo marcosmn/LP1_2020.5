@@ -11,7 +11,7 @@ Diario::Diario(const std::string& fn) : filename(fn)
 	if (arquivo.is_open())
 	{
 		std::cerr << "Arquivo não existente ou sem permissão de leitura." << std::endl;
-		return 1;
+		//return 1;
 	}
 	
 	std::string linha;
@@ -36,60 +36,33 @@ Diario::~Diario()
 void Diario::add(const std::string& mensagem)
 {
 	Mensagem mensagemAux;
-	mensagemAux.data = dataAtual();
-	mensagemAux.conteudo = mensagem;
+	
+	if(mensagem[0] == '-')
+	{
+		dataAux.tempo.hora = std::stoi(mensagem.substr(2, 2));
+		dataAux.tempo.minuto = std::stoi(mensagem.substr(5, 2));
+		dataAux.tempo.segundo = std::stoi(mensagem.substr(8, 2));
+		
+		mensagemAux.data = dataAux;
+		mensagemAux.conteudo = mensagem.substr(11);
+	}
+	else if(mensagem[0] == '#')
+	{
+		dataAux.dia = std::stoi(mensagem.substr(2, 2));
+		dataAux.mes = std::stoi(mensagem.substr(5, 2));
+		dataAux.ano = std::stoi(mensagem.substr(8, 4));
+	}
+	else
+	{
+		//dataAux.dataAtual();
+		mensagemAux.data = dataAux.dataAtual();
+		mensagemAux.conteudo = mensagem;
+	}
 	
 	//mensagens[quantidade_mensagens] = mensagemAux;
 	//add(mensagemAux);
 	mensagens.push_back(mensagemAux);
 	quantidade_mensagens++;
-	
-	// O VECTOR CUIDA DA CAPACIDADE
-	/*
-	if(quantidade_mensagens < capacidade_mensagens)
-	{
-		//diario.mensagens[quantidade_mensagens] = mensagem;
-		//mensagens[quantidade_mensagens].conteudo = mensagem;
-		
-		Mensagem mensagemAux;
-		mensagemAux.conteudo = mensagem;
-		
-		Data dataAux;
-		dataAux.set_from_string(dataAtual());
-		mensagemAux.data = dataAux;
-		
-		Hora horaAux;
-		horaAux.set_from_string(horaAtual());
-		mensagemAux.hora = horaAux;
-		
-		//mensagens[quantidade_mensagens] = mensagemAux;
-		//diario.add(mensagemAux);
-		add(mensagemAux);
-		
-		quantidade_mensagens++;
-	}
-	else
-	{
-		std::cout << "Abrindo mais 10 vagas" << std::endl;
-		
-		mensagensAux = new Mensagem[capacidade_mensagens];
-		
-		for(int contador = 0; contador < capacidade_mensagens; contador++)
-		{
-			mensagensAux[contador] = mensagens[contador];
-		}
-		
-		delete[] mensagens;
-		mensagens = new Mensagem[capacidade_mensagens + 10];
-		
-		for(int contador = 0; contador < capacidade_mensagens; contador++)
-		{
-			mensagens[contador] = mensagensAux[contador];
-		}
-	  
-		capacidade_mensagens = capacidade_mensagens + 10;
-	}
-	*/
 }
 
 void Diario::add(const Mensagem& mensagem)
@@ -107,7 +80,7 @@ void Diario::write()
 std::vector<Mensagem*> Diario::pesquisar(const std::string& mensagem)
 {
 	std::vector<Mensagem*> mensagensCorrespondentes;
-	for(int posicao = 0; posicao < quantidade_mensagens; posicao++)
+	for(size_t posicao = 0; posicao < quantidade_mensagens; posicao++)
 	{
     	if(mensagens[posicao].conteudo.find(mensagem) != std::string::npos)
 		{

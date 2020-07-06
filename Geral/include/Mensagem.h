@@ -2,6 +2,8 @@
 #include <iostream>
 #include <stdio.h>
 #include <time.h>
+#include <sstream>
+#include <ctime>
 
 using namespace std;
 

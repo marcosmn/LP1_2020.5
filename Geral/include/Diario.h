@@ -2,19 +2,22 @@
 #define W5N_DIARY_H
 
 #include "Mensagem.h"
+#include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 
 struct Diario
 {
 	Diario(const std::string& filename);
-	~Diary();
+	~Diario();
 
 	std::string filename;
 	//Mensagem* mensagens;
 	std::vector<Mensagem> mensagens;
 	size_t quantidade_mensagens;
 	size_t capacidade_mensagens;
+	Data dataAux;
 	
 	void add(const std::string& mensagem);
 	void add(const Mensagem& mensagem);

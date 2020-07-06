@@ -21,11 +21,23 @@ Data Data::dataAtual()
 	*/
 	
 	time_t rawtime;
-	struct tm * timeinfo;
+	//struct tm * timeinfo;
+	struct tm timeinfo;
 	time(&rawtime);
-	timeinfo = localtime(&rawtime);
-	//printf("Current local time and date: %s", asctime(timeinfo));
-	
+	//localtime_s(timeinfo, &rawtime);
+	localtime_s(&timeinfo, &rawtime);
+
+	//timeinfo = localtime(&rawtime);
+
+	/*
+	dataAux.ano = timeinfo -> tm_year;
+	dataAux.mes = timeinfo -> tm_mon;
+	dataAux.dia = timeinfo -> tm_mday;
+	dataAux.tempo.hora = timeinfo -> tm_hour;
+	dataAux.tempo.minuto = timeinfo -> tm_min;
+	dataAux.tempo.segundo = timeinfo -> tm_sec;
+	*/
+
 	dataAux.ano = timeinfo.tm_year;
 	dataAux.mes = timeinfo.tm_mon;
 	dataAux.dia = timeinfo.tm_mday;
