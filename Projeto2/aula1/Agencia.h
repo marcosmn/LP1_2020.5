@@ -2,12 +2,12 @@
 
 using namespace std;
 
-class Cliente
+class Agencia
 {
 public:
 	string nome;
-	int cpf;
+	int numero;
 
-	//Cliente();
-	//~Cliente();
+	//Agencia();
+	//~Agencia();
 };

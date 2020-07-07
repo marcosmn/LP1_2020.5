@@ -1,4 +1,5 @@
 #include "Cliente.h"
+#include "Agencia.h"
 
 using namespace std;
 
@@ -6,6 +7,7 @@ class Conta
 {
 public:
 	Cliente titular;
+	Agencia agencia;
 	int numero;
 	double saldo;
 
