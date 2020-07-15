@@ -21,13 +21,13 @@ Data Data::dataAtual()
 	*/
 	
 	time_t rawtime;
+	//struct tm * timeinfo;
 	struct tm * timeinfo;
-	//struct tm timeinfo;
 	time(&rawtime);
 	//localtime_s(timeinfo, &rawtime);
-	//localtime_s(&timeinfo, &rawtime);
-
 	timeinfo = localtime(&rawtime);
+
+	//timeinfo = localtime(&rawtime);
 
 	
 	dataAux.ano = timeinfo -> tm_year;
@@ -45,6 +45,5 @@ Data Data::dataAtual()
 	dataAux.tempo.minuto = timeinfo.tm_min;
 	dataAux.tempo.segundo = timeinfo.tm_sec;
 	*/
-	
     return dataAux;
 }
