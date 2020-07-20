@@ -1,0 +1,19 @@
+CODIGO,NOME,PREÇO,QUANTIDADE_VENDIDA
+1,Feijão,6.2,0
+2,Arroz,3.4,0
+3,Fubá,2.9,5
+4,Milho Verde,1.3,0
+5,Ervilha,1.3,0
+6,Farinha,2.8,0
+7,Tomate,2.25,0
+8,Laranja,3.5,0
+9,Limão,3.5,0
+10,Macaxeira,4.5,0
+11,Pimentão,3.3,0
+12,Queijo,28,0
+13,Presunto,14,0
+14,Carne,24.92,0
+15,Salsicha,8.49,0
+16,Peixe,12.45,0
+17,Margarina,2.99,0
+Vendas totais: 5 (R$ 14.5)
